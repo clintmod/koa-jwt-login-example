@@ -1,0 +1,34 @@
+{
+  "name": "koa-jwt-login-example",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "src/server.js",
+  "dependencies": {
+    "bcrypt": "latest",
+    "jsonwebtoken": "latest",
+    "koa": "latest",
+    "koa-body": "latest",
+    "koa-jwt": "https://github.com/clintmod/jwt.git#v3.2.3-beta",
+    "koa-logger": "latest",
+    "koa-router": "latest"
+  },
+  "devDependencies": {
+    "chai": "latest",
+    "chokidar-cli": "latest",
+    "eslint": "latest",
+    "growl": "latest",
+    "mocha": "latest",
+    "nodemon": "latest",
+    "should": "latest",
+    "supertest": "latest"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production node --harmony src/server.js",
+    "dev": "NODE_ENV=development node --inspect --harmony src/server.js",
+    "local": "DEBUG=* NODE_ENV=local nodemon --inspect --harmony src/server.js",
+    "test": "NODE_ENV=test mocha --reporter='min' --growl --harmony ./src/**/*.spec.js;",
+    "test-watch": "chokidar --initial './src/**/*.js' -c 'yarn test'",
+    "lint": "eslint -c .eslintrc.json .",
+    "test-mocha-watch": "NODE_ENV=test mocha --watch --harmony ./src/**/*.spec.js"
+  }
+}
