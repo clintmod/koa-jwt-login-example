@@ -103,6 +103,7 @@ describe('Login example', () => {
       .expect(401)
       .end(function (err, result) {
         assert.equal(result.body.error, 'jwt expired');
+        assert.equal(result.header['x-status-reason'], 'jwt expired');
         done();
       });
   })
@@ -116,6 +117,7 @@ describe('Login example', () => {
       .expect(401)
       .end(function (err, result) {
         assert.equal(result.body.error, 'invalid signature');
+        assert.equal(result.header['x-status-reason'], 'invalid signature');
         done();
       });
   })
@@ -129,6 +131,7 @@ describe('Login example', () => {
       .expect(401)
       .end(function (err, result) {
         assert.equal(result.body.error, 'invalid token');
+        assert.equal(result.header['x-status-reason'], 'invalid token');
         done();
       });
   })
@@ -142,6 +145,7 @@ describe('Login example', () => {
       .expect(401)
       .end(function (err, result) {
         assert.equal(result.body.error, 'jwt malformed');
+        assert.equal(result.header['x-status-reason'], 'jwt malformed');
         done();
       });
   })

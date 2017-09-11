@@ -19,20 +19,22 @@ app.use(async function (ctx, next) {
   return next().catch((err) => {
     if (err.status === 401) {
       ctx.status = 401;
-      let errMessage = err.originalError
-        ? err.originalError.message
-        : err.message
+      let errMessage = err.originalError ?
+        err.originalError.message :
+        err.message
       ctx.body = {
         error: errMessage
       };
-      ctx.set("X-Status-Reason", err)
+      ctx.set("X-Status-Reason", errMessage)
     } else {
       throw err;
     }
   });
 });
 
-app.use(jwt({secret: secret}).unless({
+app.use(jwt({
+  secret: secret
+}).unless({
   path: [/^\/public/, "/"]
 }));
 
