@@ -42,7 +42,7 @@ curl -X POST --data '{"username":"thedude", "password":"abides", "email":"thedud
 * use `curl` to login with that user and get a token:
 
 ```bash
-curl -X POST --data '{"username":"thedude", "password":"abides", "email":"thedude@slacker.com", "name":"Mr. Lebowski"}' http://localhost:9000/public/register
+curl -X POST --data '{"username":"thedude", "password":"abides", "email":"thedude@slacker.com", "name":"Mr. Lebowski"}' http://localhost:9000/public/login
 ```
 
 * use `curl` to access the secured `api/v1` route with the token you received in the login step
